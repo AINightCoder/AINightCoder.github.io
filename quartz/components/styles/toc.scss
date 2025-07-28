@@ -3,6 +3,7 @@
 .toc {
   display: flex;
   flex-direction: column;
+  padding: 1rem 0; // 增加容器的上下内边距
 
   &.desktop-only {
     max-height: 40%;
@@ -28,7 +29,7 @@ button#toc {
   & h3 {
     font-size: 1rem;
     display: inline-block;
-    margin: 0;
+    margin: 0 0 0.75rem 0; // 增加标题的下边距
   }
 
   & .fold {
@@ -67,7 +68,7 @@ button#toc {
 
   & ul {
     list-style: none;
-    margin: 0.5rem 0;
+    margin: 0.75rem 0; // 增加列表的上下边距
     padding: 0;
     & > li > a {
       color: var(--dark);

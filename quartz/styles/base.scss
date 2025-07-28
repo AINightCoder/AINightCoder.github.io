@@ -213,7 +213,7 @@ a {
     grid-template-areas: #{map-get($desktopGrid, templateAreas)};
 
     & .sidebar {
-      gap: 1.2rem;
+      gap: 1.5rem; // 增加组件间距从1.2rem到1.5rem
       top: 0;
       box-sizing: border-box;
       padding: $topSpacing 1rem 2rem 1rem;
