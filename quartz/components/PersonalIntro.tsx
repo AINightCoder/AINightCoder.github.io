@@ -12,7 +12,7 @@ const PersonalIntro: QuartzComponent = ({ displayClass }: QuartzComponentProps) 
           <li>💻 白天写代码，晚上搞副业</li>
           <li>🤖 用AI做有趣又能赚钱的应用</li>
           <li>📈 Build in Public，记录真实创业旅程</li>
-          <li>🎯 目标：把副业做到能养活自己</li>
+          <li>🎯 目标：实现5位数以上的持续性被动收入</li>
         </ul>
       </div>
 

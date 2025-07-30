@@ -1,9 +1,9 @@
 document.addEventListener("nav", () => {
-  const wechatTrigger = document.querySelector(".wechat-trigger") as HTMLButtonElement
+  const wechatTriggers = document.querySelectorAll(".wechat-trigger") as NodeListOf<HTMLElement>
   const wechatModal = document.getElementById("wechat-modal") as HTMLElement
   const wechatClose = document.querySelector(".wechat-close") as HTMLButtonElement
 
-  if (!wechatTrigger || !wechatModal || !wechatClose) {
+  if (!wechatTriggers.length || !wechatModal || !wechatClose) {
     return
   }
 
@@ -26,14 +26,19 @@ document.addEventListener("nav", () => {
     }
   }
 
-  // 绑定事件监听器
-  wechatTrigger.addEventListener("click", showWechatModal)
+  // 为所有微信触发器绑定事件监听器
+  wechatTriggers.forEach(trigger => {
+    trigger.addEventListener("click", showWechatModal)
+  })
+
   wechatClose.addEventListener("click", hideWechatModal)
   wechatModal.addEventListener("click", handleModalClick)
 
   // 清理函数
   window.addCleanup(() => {
-    wechatTrigger.removeEventListener("click", showWechatModal)
+    wechatTriggers.forEach(trigger => {
+      trigger.removeEventListener("click", showWechatModal)
+    })
     wechatClose.removeEventListener("click", hideWechatModal)
     wechatModal.removeEventListener("click", handleModalClick)
   })
