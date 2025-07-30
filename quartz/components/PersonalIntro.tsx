@@ -16,6 +16,12 @@ const PersonalIntro: QuartzComponent = ({ displayClass }: QuartzComponentProps) 
         </ul>
       </div>
 
+      <div class="wechat-group-invite">
+        <span class="wechat-group-link wechat-trigger">
+          💬 点击加入社群
+        </span>
+      </div>
+
       <div class="social-links">
         <a href="https://github.com/AINightCoder" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
           <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -154,6 +160,28 @@ PersonalIntro.css = `
   position: relative;
 }
 
+/* 微信社群邀请样式 */
+.wechat-group-invite {
+  margin: 0.8rem 0;
+  text-align: left;
+}
+
+.wechat-group-link {
+  display: inline;
+  color: var(--secondary);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.wechat-group-link:hover {
+  color: #07c160;
+  border-bottom-color: #07c160;
+}
+
 .social-links {
   display: flex;
   gap: 0.8rem;
@@ -266,6 +294,16 @@ PersonalIntro.css = `
   color: var(--lightgray);
 }
 
+/* 暗色主题微信社群邀请样式 */
+:root[saved-theme="dark"] .wechat-group-link {
+  color: var(--secondary);
+}
+
+:root[saved-theme="dark"] .wechat-group-link:hover {
+  color: #07c160;
+  border-bottom-color: #07c160;
+}
+
 :root[saved-theme="dark"] .social-links {
   border-top-color: var(--darkgray);
 }
@@ -319,6 +357,15 @@ PersonalIntro.css = `
   .intro-list li {
     font-size: 0.75rem;
     margin: 0.2rem 0;
+  }
+
+  /* 移动端微信社群邀请样式 */
+  .wechat-group-invite {
+    margin: 0.6rem 0;
+  }
+
+  .wechat-group-link {
+    font-size: 0.75rem;
   }
 
   .social-links {
