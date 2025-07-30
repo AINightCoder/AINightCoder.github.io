@@ -1,4 +1,6 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
+// @ts-ignore
+import wechatScript from "./scripts/wechat.inline"
 import { classNames } from "../util/lang"
 
 const PersonalIntro: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
@@ -27,6 +29,33 @@ const PersonalIntro: QuartzComponent = ({ displayClass }: QuartzComponentProps) 
           </svg>
         </a>
 
+        <button
+          class="social-link wechat-trigger"
+          title="微信"
+        >
+            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                <g transform="scale(1.5)">
+                <path d="M11.176 14.429c-2.665 0-4.826-1.8-4.826-4.018
+                        0-2.22 2.159-4.02 4.824-4.02S16 8.191 16 10.411
+                        c0 1.21-.65 2.301-1.666 3.036a.32.32 0 0 0-.12.366l.218.81
+                        a.6.6 0 0 1 .029.117.166.166 0 0 1-.162.162.2.2 0 0 1-.092-.03
+                        l-1.057-.61a.5.5 0 0 0-.256-.074.5.5 0 0 0-.142.021
+                        5.7 5.7 0 0 1-1.576.22M9.064 9.542a.647.647 0 1 0
+                        .557-1 .645.645 0 0 0-.646.647.6.6 0 0 0 .09.353Zm3.232.001
+                        a.646.646 0 1 0 .546-1 .645.645 0 0 0-.644.644.63.63 0 0 0
+                        .098.356"/>
+                <path d="M0 6.826c0 1.455.781 2.765 2.001 3.656a.385.385 0 0 1
+                        .143.439l-.161.6-.1.373a.5.5 0 0 0-.032.14.19.19 0 0 0
+                        .193.193q.06 0 .111-.029l1.268-.733a.6.6 0 0 1
+                        .308-.088q.088 0 .171.025a6.8 6.8 0 0 0 1.625.26
+                        4.5 4.5 0 0 1-.177-1.251c0-2.936 2.785-5.02 5.824-5.02l.15.002
+                        C10.587 3.429 8.392 2 5.796 2 2.596 2 0 4.16 0 6.826m4.632-1.555
+                        a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0m3.875 0a.77.77 0 1 1
+                        -1.54 0 .77.77 0 0 1 1.54 0"/>
+                </g>
+            </svg>
+        </button>
+
         {/* <a href="https://www.linkedin.com/in/ainightcoder" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
           <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -50,6 +79,23 @@ const PersonalIntro: QuartzComponent = ({ displayClass }: QuartzComponentProps) 
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
           </svg>
         </a> */}
+      </div>
+
+      {/* 微信二维码弹窗 */}
+      <div
+        id="wechat-modal"
+        class="wechat-modal"
+      >
+        <div class="wechat-modal-content">
+          <button
+            class="wechat-close"
+          >
+            ×
+          </button>
+          <h3>微信联系</h3>
+          <img src="/static/wechat_qrcode.png" alt="微信二维码" class="wechat-qr" />
+          <p>扫描二维码添加微信</p>
+        </div>
       </div>
     </div>
   )
@@ -130,6 +176,8 @@ PersonalIntro.css = `
   text-decoration: none;
   transition: all 0.2s ease;
   position: relative;
+  border: none;
+  cursor: pointer;
 }
 
 .social-link:hover {
@@ -143,6 +191,66 @@ PersonalIntro.css = `
   width: 1rem;
   height: 1rem;
   fill: currentColor;
+}
+
+/* 微信弹窗样式 */
+.wechat-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.wechat-modal-content {
+  background: var(--light);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  max-width: 300px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.wechat-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--darkgray);
+  transition: color 0.2s ease;
+}
+
+.wechat-close:hover {
+  color: var(--dark);
+}
+
+.wechat-modal-content h3 {
+  margin: 0 0 1rem 0;
+  color: var(--dark);
+  font-size: 1.2rem;
+}
+
+.wechat-qr {
+  width: 200px;
+  height: 200px;
+  margin: 1rem 0;
+  border-radius: 8px;
+}
+
+.wechat-modal-content p {
+  margin: 1rem 0 0 0;
+  color: var(--darkgray);
+  font-size: 0.9rem;
 }
 
 /* 暗色主题优化 */
@@ -170,6 +278,27 @@ PersonalIntro.css = `
 :root[saved-theme="dark"] .social-link:hover {
   background: var(--secondary);
   color: var(--light);
+}
+
+/* 暗色主题微信弹窗样式 */
+:root[saved-theme="dark"] .wechat-modal-content {
+  background: var(--darkgray);
+}
+
+:root[saved-theme="dark"] .wechat-modal-content h3 {
+  color: var(--light);
+}
+
+:root[saved-theme="dark"] .wechat-close {
+  color: var(--lightgray);
+}
+
+:root[saved-theme="dark"] .wechat-close:hover {
+  color: var(--light);
+}
+
+:root[saved-theme="dark"] .wechat-modal-content p {
+  color: var(--lightgray);
 }
 
 /* 响应式优化 */
@@ -209,5 +338,7 @@ PersonalIntro.css = `
   }
 }
 `
+
+PersonalIntro.afterDOMLoaded = wechatScript
 
 export default (() => PersonalIntro) satisfies QuartzComponentConstructor
