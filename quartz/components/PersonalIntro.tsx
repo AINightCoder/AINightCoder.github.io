@@ -227,12 +227,15 @@ PersonalIntro.css = `
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  /* 确保弹窗始终在视口中央 */
+  inset: 0;
 }
 
 .wechat-modal-content {
@@ -240,9 +243,14 @@ PersonalIntro.css = `
   border-radius: 12px;
   padding: 2rem;
   text-align: center;
-  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   max-width: 300px;
   width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -382,6 +390,19 @@ PersonalIntro.css = `
   .social-icon {
     width: 0.9rem;
     height: 0.9rem;
+  }
+
+  /* 移动端微信弹窗优化 */
+  .wechat-modal-content {
+    width: 95%;
+    max-width: 280px;
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .wechat-qr {
+    width: 180px;
+    height: 180px;
   }
 }
 `
