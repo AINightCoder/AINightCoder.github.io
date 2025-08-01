@@ -227,8 +227,11 @@ PersonalIntro.css = `
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
+  /* 支持动态视口高度 */
   height: 100vh;
+  height: 100dvh; /* 动态视口高度，支持现代浏览器 */
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
   align-items: center;
@@ -236,6 +239,8 @@ PersonalIntro.css = `
   overflow: hidden;
   /* 确保弹窗始终在视口中央 */
   inset: 0;
+  /* 移动端优化 */
+  -webkit-overflow-scrolling: touch;
 }
 
 .wechat-modal-content {
@@ -243,15 +248,16 @@ PersonalIntro.css = `
   border-radius: 12px;
   padding: 2rem;
   text-align: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   max-width: 300px;
   width: 90%;
   max-height: 90vh;
+  max-height: 90dvh; /* 动态视口高度 */
   overflow-y: auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  /* 移动端优化 */
+  margin: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .wechat-close {
@@ -393,11 +399,30 @@ PersonalIntro.css = `
   }
 
   /* 移动端微信弹窗优化 */
+  .wechat-modal {
+    /* 移动端确保全屏覆盖 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    /* 避免使用vh单位在移动端的问题 */
+    min-height: 100%;
+  }
+
   .wechat-modal-content {
     width: 95%;
     max-width: 280px;
     padding: 1.5rem;
-    margin: 1rem;
+    margin: 1rem auto;
+    /* 移动端垂直居中优化 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: calc(100% - 2rem);
   }
 
   .wechat-qr {

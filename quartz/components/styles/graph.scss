@@ -43,14 +43,25 @@
     z-index: 9999;
     left: 0;
     top: 0;
-    width: 100vw;
+    width: 100%;
     height: 100%;
+    /* 支持动态视口高度 */
+    height: 100vh;
+    height: 100dvh; /* 动态视口高度，支持现代浏览器 */
     backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.3);
     display: none;
     overflow: hidden;
+    /* 确保弹窗始终在视口中央 */
+    inset: 0;
+    /* 移动端优化 */
+    -webkit-overflow-scrolling: touch;
+    /* 使用flex布局居中 */
+    align-items: center;
+    justify-content: center;
 
     &.active {
-      display: inline-block;
+      display: flex;
     }
 
     & > #global-graph-container {
@@ -58,16 +69,50 @@
       background-color: var(--light);
       border-radius: 5px;
       box-sizing: border-box;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      position: relative;
       height: 80vh;
+      height: 80dvh; /* 动态视口高度 */
       width: 80vw;
+      max-width: 90%;
+      max-height: 90%;
+      /* 移动端优化 */
+      margin: auto;
+      -webkit-overflow-scrolling: touch;
 
       @media all and not ($desktop) {
-        width: 90%;
+        width: 95%;
+        height: 85vh;
+        height: 85dvh;
       }
+
+      /* 移动端特定优化 */
+      @media (max-width: 600px) {
+        width: 98%;
+        height: 90vh;
+        height: 90dvh;
+        /* 移动端垂直居中优化 */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-height: calc(100% - 2rem);
+      }
+    }
+  }
+
+  /* 移动端全局图谱弹窗优化 */
+  @media (max-width: 600px) {
+    & > #global-graph-outer {
+      /* 移动端确保全屏覆盖 */
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      /* 避免使用vh单位在移动端的问题 */
+      min-height: 100%;
     }
   }
 }

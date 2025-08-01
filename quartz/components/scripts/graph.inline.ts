@@ -585,8 +585,30 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   const container = document.getElementById("global-graph-outer")
   const sidebar = container?.closest(".sidebar") as HTMLElement
 
+  // 锁定body滚动
+  const lockBodyScroll = () => {
+    const scrollY = window.scrollY
+    document.body.style.position = 'fixed'
+    document.body.style.top = `-${scrollY}px`
+    document.body.style.width = '100%'
+    document.body.setAttribute('data-scroll-y', scrollY.toString())
+  }
+
+  // 解锁body滚动
+  const unlockBodyScroll = () => {
+    const scrollY = document.body.getAttribute('data-scroll-y')
+    document.body.style.position = ''
+    document.body.style.top = ''
+    document.body.style.width = ''
+    document.body.removeAttribute('data-scroll-y')
+    if (scrollY) {
+      window.scrollTo(0, parseInt(scrollY))
+    }
+  }
+
   function renderGlobalGraph() {
     const slug = getFullSlug(window)
+    lockBodyScroll()
     container?.classList.add("active")
     if (sidebar) {
       sidebar.style.zIndex = "1"
@@ -597,6 +619,7 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   }
 
   function hideGlobalGraph() {
+    unlockBodyScroll()
     container?.classList.remove("active")
     if (sidebar) {
       sidebar.style.zIndex = ""
