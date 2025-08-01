@@ -1,141 +1,78 @@
 ---
 title: "index"
 date: "2024-11-22T12:10:03.979Z"
-updated: "2025-07-26T21:56:25.009Z"
+updated: "2025-08-01T18:01:08.512Z"
 categories:
 tags:
 ---
 
-翻译下面英文为中文
 
-This is a blank Quartz installation. See the [文档](https://bill.is-a.dev/quartz-doc-cn/) for how to get started.
+## 🌙 我的故事
 
-To install Quartz, you can follow these steps:
+👋 你好，我是 AI夜码人，一个来自沈阳的全栈开发者。从2025年开始，我白天在科技公司担任技术主管，晚上9点-12点则化身**夜码人**，专注于用AI打造能带来被动收入的应用。
 
-### 1. **Prerequisites**
+我相信：<mark style="background: #fefe00A6;">"财务自由是终极目标，只打工是慢性自杀，一定要打造属于自己的事业"</mark>
 
-   - Ensure you have Python installed on your system. Quartz is a Python-based static site generator, so you'll need Python to run it.
-   - It's recommended to use a virtual environment to manage dependencies.
+## 🚀 我的项目
 
-### 2. **Create a Virtual Environment (Optional but Recommended)**
+### 📊 VocalMind
 
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   ```
+- **状态**: 开发中
+- **技术**: FastAPI + Android + Gemini/DeepSeek API
+- **目标**: 语音转录和AI分析总结
+- **进度**: MVP已完成，正在内测  
 
-### 3. **Install Quartz**
+### 💰 AI量化交易机器人
 
-   You can install Quartz using pip, the Python package manager.
+- **状态**: 测试阶段
+- **策略**: 基于强化学习的数字货币交易
+- **表现**: 回测年化收益35%（还在继续优化）
 
-   ```bash
-   pip install quartz
-   ```
+## 🎯 我的价值主张
 
-### 4. **Verify Installation**
+**"用AI搞钱，让代码变现"**
+- ✅ **只做ROI高的事情** - 每个项目都经过严格的投入产出分析
+- ✅ **充分利用AI杠杆** - 让AI处理80%的重复工作
+- ✅ **持续自动化** - 凡是能自动化的地方就打造自动化流程
+- ✅ **Build in Public** - 真实分享每一个成功和失败
 
-   After installation, you can verify that Quartz is installed correctly by running:
+## 🤝 如何与我连接
 
-   ```bash
-   quartz --version
-   ```
+- 🐦 **Twitter**:  [@AINightCoder](https://x.com/AINightCoder) - 每日开发日志
+- 📕 **小红书**: AI夜码人 - 技术干货分享
+- 🎬 **B站**: AI夜码人 - 项目实战视频
+- **GitHub**:  [AINightCoder](https://github.com/AINightCoder)
 
-   This should display the version of Quartz that you have installed.
+## 📚 免费资源
 
-### 5. **Create a New Quartz Project**
+  
 
-   To create a new Quartz project, you can use the following command:
+### 📖 学习路径
 
-   ```bash
-   quartz new my_project
-   cd my_project
-   ```
+- [独立开发者指南](fe8977322821828bbf8760ce221e114b3b702818)
 
-   This will create a new directory named `my_project` with the basic structure of a Quartz site.
+### 🔧 工具分享
 
-### 6. **Build and Serve the Site**
+  
 
-   Once your project is set up, you can build and serve the site locally:
+## 🎁 加入我的社群
 
-   ```bash
-   quartz build
-   quartz serve
-   ```
+**AI夜码人·副业交流群**
+- 📊 每周分享真实项目数据
+- 🤖 AI工具使用技巧交流
+- 💰 被动收入机会分享
+![](/images/wechat_qrcode.png)
 
-   This will compile your site and start a local server, allowing you to view your site at `http://localhost:8000`.
+## 🔔 订阅更新
 
-### 7. **Deploy Your Site**
+> **承诺**: 绝不发送垃圾邮件，只分享有价值的内容
 
-   After you're satisfied with your site, you can deploy it to your preferred hosting service. Quartz sites are static, so they can be hosted on platforms like GitHub Pages, Netlify, Vercel, or any web server that supports static files.
+加入我的**每周夜码报告**，获取：
+- 📊 最新项目进展和数据
+- 🛠️ 新发现的AI工具和技巧
+- 💡 副业机会和变现思路
+- 🎯 下周计划和目标
 
-### 8. **Additional Resources**
+[👉 点击订阅每周报告](mailto:qiaogaojian@vip.qq.com?subject=订阅夜码报告)
 
-   - [Quartz Documentation](https://quartz.p3k.io/): Official documentation for further details and advanced usage.
-   - [Quartz GitHub Repository](https://github.com/jackyzha0/quartz): Source code and issue tracker.
-
-
-
-这是一个空白的Quartz安装。请参阅[文档](https://bill.is-a.dev/quartz-doc-cn/)以了解如何开始使用。
-
-要安装Quartz，您可以按照以下步骤操作：
-
-### 1. **前提条件**
-
-   - 确保您的系统上已安装Python。Quartz是一个基于Python的静态站点生成器，因此您需要Python来运行它。
-   - 建议使用虚拟环境来管理依赖项。
-
-### 2. **创建虚拟环境（可选但推荐）**
-
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # 在Windows上使用 `venv\Scripts\activate`
-   ```
-
-### 3. **安装Quartz**
-
-   您可以使用Python的包管理器pip来安装Quartz。
-
-   ```bash
-   pip install quartz
-   ```
-
-### 4. **验证安装**
-
-   安装完成后，您可以通过运行以下命令来验证Quartz是否正确安装：
-
-   ```bash
-   quartz --version
-   ```
-
-   这将显示您已安装的Quartz版本。
-
-### 5. **创建新的Quartz项目**
-
-   要创建一个新的Quartz项目，您可以使用以下命令：
-
-   ```bash
-   quartz new my_project
-   cd my_project
-   ```
-
-   这将创建一个名为`my_project`的新目录，其中包含Quartz站点的基本结构。
-
-### 6. **构建并提供站点**
-
-   设置好项目后，您可以在本地构建并提供站点：
-
-   ```bash
-   quartz build
-   quartz serve
-   ```
-
-   这将编译您的站点并启动一个本地服务器，允许您在`http://localhost:8000`查看您的站点。
-
-### 7. **部署您的站点**
-
-   对您的站点满意后，您可以将其部署到您首选的托管服务。Quartz站点是静态的，因此它们可以托管在GitHub Pages、Netlify、Vercel或任何支持静态文件的Web服务器上。
-
-### 8. **附加资源**
-
-   - [Quartz文档](https://quartz.p3k.io/)：官方文档，提供进一步的详细信息和高级用法。
-   - [Quartz GitHub仓库](https://github.com/jackyzha0/quartz)：源代码和问题跟踪器。
+*"用AI搞钱，让代码变现"*
