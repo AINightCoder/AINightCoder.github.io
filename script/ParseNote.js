@@ -374,15 +374,8 @@ function generateFrontMatter(page, tags, isTop, config) {
     let filePath = path.join(config.pathFrom, page.file.path);
     let categories = pathToTags(filePath, config.pathFrom);
 
-    // 处理文件名中的日期前缀
-    let cleanTitle = page.file.name;
-    const dateMatch = cleanTitle.match(/^\d{4}-\d{2}-\d{2}\s*(.+)$/);
-    if (dateMatch) {
-        cleanTitle = dateMatch[1];
-    }
-
     let frontMatter = `---\n`;
-    frontMatter += `title: "${cleanTitle}"\n`;
+    frontMatter += `title: "${page.file.name}"\n`;
     frontMatter += `date: "${new Date(page.file.ctime).toISOString()}"\n`;
     frontMatter += `updated: "${new Date(page.file.mtime).toISOString()}"\n`;
     frontMatter += `categories:\n`;
