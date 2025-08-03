@@ -14,12 +14,21 @@ const defaultOptions = {
   folderDefaultState: "collapsed",
   useSavedState: true,
   mapFn: (node) => {
-    // 只处理顶级目录，去掉数字前缀
-    if (node.depth === 1 && !node.file) {
-      // 匹配如 "3.商业" 的模式，提取 "商业"
-      const match = node.displayName.match(/^\d+\.(.+)$/)
-      if (match) {
-        node.displayName = match[1]
+    // 处理日期开头的文件名
+    if (node.file) {
+      // 匹配日期格式：YYYY-MM-DD 或 YYYY-MM-DD空格开头
+      const dateMatch = node.displayName.match(/^\d{4}-\d{2}-\d{2}\s*(.+)$/)
+      if (dateMatch) {
+        node.displayName = dateMatch[1]
+      }
+    } else {
+      // 只处理顶级目录，去掉数字前缀
+      if (node.depth === 1) {
+        // 匹配如 "3.商业" 的模式，提取 "商业"
+        const match = node.displayName.match(/^\d+\.(.+)$/)
+        if (match) {
+          node.displayName = match[1]
+        }
       }
     }
     return node
